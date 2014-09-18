@@ -1,0 +1,6 @@
+<h1>Firebase Demo</h1>
+<hr/>
+<p>Type something in the box, and it will be persisted to Firebase.</p>
+<div ng-show="ready">
+	<input type="text" class="form-control" ng-model="data.message" ng-change="data.$save()"/>
+</div>

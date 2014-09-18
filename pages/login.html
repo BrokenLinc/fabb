@@ -1,0 +1,27 @@
+<div class="text-center" ng-hide="auth.user">
+	<h1>Log in</h1>
+	<hr/>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<form ng-submit="submit()" name="loginForm">
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="email" ng-model="email" name="email" required/>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="password" ng-model="password" required/>
+				</div>
+				<button type="submit" class="btn btn-default btn-block" ng-disabled="!loginForm.$valid">Log in</button>
+				<div class="label label-danger block" ng-show="!loginForm.$valid">
+					{{loginForm.email.$error.email? 'Email must be a real address' : 'All fields are required'}}
+				</div>
+			</form>
+			<br/>
+			<a ui-sref="forgot-password">Forgot your password?</a>
+		</div>
+	</div>
+</div>
+
+<div class="text-center" ng-show="auth.user">
+	<h1>Success!</h1>
+	<p>You've logged in, {{ auth.user.email }}!
+</div>

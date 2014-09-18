@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>My Fabb App</title>
+		<!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+		<!--Bootswatch themes: amelia|cerulean|cosmo|cyborg|darkly|flatly|journal|lumen|paper|readable|sandstone|simplex|slate|spacelab|superhero|united|yeti-->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/slate/bootstrap.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.4/toaster.css"/>
+		<style>.block{display:block}</style>
+		<!--[if lt IE 9]>
+		<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<!--<link rel="SHORTCUT ICON" href="favicon.ico" />
+		<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">    
+		<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">-->
+		<!--WP8 IE10 patch--><script>(function(){if("-ms-user-select" in document.documentElement.style){var m=document.createElement("style");m.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));document.getElementsByTagName("head")[0].appendChild(m);}})();</script>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js" ></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.4/toaster.js"></script>
+		<script src="//cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+		<script src="//cdn.firebase.com/js/simple-login/1.6.3/firebase-simple-login.js"></script>
+		<script src="//cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+
+		<script src="app.js"></script>
+	</head>
+	<body ng-app="app" ng-cloak>
+
+		<toaster-container></toaster-container>
+
+		<div>
+			<div class="navbar navbar-default navbar-static-top" role="navigation" ng-controller="NavController">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" ng-click="isOpen = !isOpen">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" ui-sref="index">My Fabb App</a>
+					</div>
+					<div class="navbar-collapse" collapse="!isOpen">
+						<ul class="nav navbar-nav">
+							<li ui-sref-active="active"><a ui-sref="firebase-demo">Firebase Demo</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li ui-sref-active="active" ng-hide="auth.user"><a ui-sref="login">Log in</a></li>
+							<li class="dropdown" ng-show="auth.user">
+								<a href="#" class="dropdown-toggle">{{auth.user.email}} <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a ui-sref="change-password">Change your password</a></li>
+									<li><a ui-sref="index" ng-click="auth.$logout()">Log out</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div ui-view></div>
+			</div>
+
+		</div>
+
+	</body>
+</html>
